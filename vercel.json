@@ -8,7 +8,7 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "dist/app.js" },
-    { "src": "/", "dest": "dist/app.js" }
+    { "src": "/?", "dest": "dist/app.js" }
   ],
   "buildCommand": "npm run build"
 }
