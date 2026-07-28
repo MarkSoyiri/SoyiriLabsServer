@@ -58,6 +58,10 @@ app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
 app.use(errorHandler);
 
+app.get('/', (_req, res) => {
+  res.json({ success: true, message: 'Soyiri Labs API', version: '1.0.0', endpoints: ['/api/projects', '/api/services', '/api/testimonials', '/api/blog', '/api/contact', '/api/auth', '/api/homepage', '/api/company'] });
+});
+
 app.use((_req, res) => {
   res.status(404).json({ success: false, message: 'Route not found' });
 });
