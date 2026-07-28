@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const connectDB = async (): Promise<void> => {
   const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/soyirilabs';
   try {
-    const conn = await mongoose.connect(mongoURI);
+    const conn = await mongoose.connect(mongoURI, { bufferCommands: false });
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.error(`MongoDB connection error: ${error}`);

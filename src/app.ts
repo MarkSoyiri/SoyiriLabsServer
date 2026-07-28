@@ -4,11 +4,34 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
+import mongoose from 'mongoose';
 import routes from './routes';
 import { errorHandler } from './middleware/errorHandler';
 import path from 'path';
 
 const app = express();
+
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/soyirilabs';
+
+let cachedConnection: typeof mongoose | null = null;
+
+async function connectDB() {
+  if (cachedConnection && mongoose.connection.readyState === 1) return cachedConnection;
+  try {
+    const conn = await mongoose.connect(mongoURI, { bufferCommands: false });
+    cachedConnection = conn;
+    console.log('MongoDB connected');
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
+  }
+}
+
+const dbMiddleware = async (_req: express.Request, _res: express.Response, next: express.NextFunction) => {
+  await connectDB();
+  next();
+};
+
+app.use(dbMiddleware);
 
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 
