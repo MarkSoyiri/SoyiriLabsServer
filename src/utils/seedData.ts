@@ -92,68 +92,95 @@ const seedData = async (): Promise<void> => {
     console.log('Company info seeded');
   }
 
-  // Projects
-  if (!collectionNames.includes('projects') || (await Project.countDocuments()) === 0) {
+  // Projects — upsert by slug so it works regardless of existing data
+  {
     const projects = [
       {
-        title: 'E-Commerce Platform Redesign',
-        slug: 'ecommerce-platform-redesign',
+        title: 'Zesty Cave',
+        slug: 'zesty-cave',
         description:
-          'A complete redesign and rebuild of a major e-commerce platform, improving conversion rates by 40% and reducing page load times by 60%.',
-        clientName: 'ShopMax Retail',
-        industry: 'E-Commerce',
-        technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redis', 'AWS'],
-        thumbnail: 'https://res.cloudinary.com/demo/image/upload/v1/soyirilabs/projects/ecommerce',
+          'A modern online food ordering platform built for restaurants. Customers can browse menus, place orders, make secure payments, and track orders in real time. Includes a powerful admin dashboard for managing products, categories, customers, orders, payments, and business operations.',
+        clientName: 'Zesty Cave',
+        industry: 'Restaurant / E-Commerce',
+        technologies: ['React', 'Express.js', 'Node.js', 'MongoDB', 'Tailwind CSS'],
+        thumbnail: 'https://placehold.co/800x600/E11D48/FFFFFF?text=Zesty+Cave',
         gallery: [],
-        liveUrl: 'https://example.com',
-        githubUrl: 'https://github.com/soyirilabs/ecommerce',
+        liveUrl: 'https://react-shop-project-bootstrap.vercel.app/',
         featured: true,
-        completionYear: '2024',
-        servicesProvided: ['Web Development', 'UI/UX Design', 'Cloud Infrastructure'],
-        colorTheme: '#2563eb',
+        completionYear: '2025',
+        servicesProvided: ['Web Development', 'E-Commerce', 'Admin Dashboard'],
+        colorTheme: '#e11d48',
         status: 'published',
-        challenges: 'The existing platform suffered from slow load times and a confusing checkout process.',
-        solution: 'We rebuilt the frontend with React and implemented server-side rendering, optimized database queries, and redesigned the checkout flow.',
-        results: '40% increase in conversion rate, 60% faster page loads, and a 25% reduction in cart abandonment.',
+        seoTitle: 'Zesty Cave | Restaurant Food Ordering Platform | Soyiri Labs',
+        seoDescription: 'Zesty Cave is a modern online food ordering platform built for restaurants with menu browsing, secure payments, real-time order tracking, and a powerful admin dashboard.',
       },
       {
-        title: 'Healthcare Management System',
-        slug: 'healthcare-management-system',
+        title: 'HydroMonitor',
+        slug: 'hydromonitor',
         description:
-          'A comprehensive healthcare management system featuring patient records, appointment scheduling, and telemedicine capabilities.',
-        clientName: 'MediCare Plus',
-        industry: 'Healthcare',
-        technologies: ['Angular', 'Python', 'PostgreSQL', 'WebRTC', 'Docker'],
-        thumbnail: 'https://res.cloudinary.com/demo/image/upload/v1/soyirilabs/projects/healthcare',
+          'A complete smart water monitoring and billing platform designed for property managers and institutions. Provides real-time monitoring from ESP32 devices, tenant management, billing, analytics, leak detection, alerts, and administrative tools through a modern responsive dashboard.',
+        clientName: 'HydroMonitor',
+        industry: 'IoT / Smart Water Management',
+        technologies: ['React', 'Express.js', 'Node.js', 'MongoDB', 'ESP32', 'Firebase'],
+        thumbnail: 'https://placehold.co/800x600/0891B2/FFFFFF?text=HydroMonitor',
         gallery: [],
-        liveUrl: 'https://example.com',
+        liveUrl: 'https://hydromonitor-web-app.vercel.app/',
         featured: true,
-        completionYear: '2024',
-        servicesProvided: ['Web Development', 'Mobile Development', 'Cloud Infrastructure'],
-        colorTheme: '#059669',
+        completionYear: '2025',
+        servicesProvided: ['Web Development', 'IoT Development', 'Dashboard Design'],
+        colorTheme: '#0891b2',
         status: 'published',
+        seoTitle: 'HydroMonitor | Smart Water Monitoring & Billing Platform | Soyiri Labs',
+        seoDescription: 'HydroMonitor is a smart water monitoring and billing platform with ESP32 integration, real-time usage tracking, tenant management, billing, analytics, and leak detection.',
       },
       {
-        title: 'Fintech Mobile App',
-        slug: 'fintech-mobile-app',
+        title: 'HydroMonitorV2 Backend',
+        slug: 'hydromonitor-v2-backend',
         description:
-          'A mobile-first fintech application enabling seamless peer-to-peer transfers, budgeting tools, and real-time financial insights.',
-        clientName: 'Pocket Finance',
-        industry: 'Fintech',
-        technologies: ['Flutter', 'Go', 'GraphQL', 'PostgreSQL', 'Firebase'],
-        thumbnail: 'https://res.cloudinary.com/demo/image/upload/v1/soyirilabs/projects/fintech',
+          'A robust backend infrastructure powering the next generation of smart water monitoring. Built with Node.js and Express, it handles real-time sensor data ingestion via MQTT, WebSocket-based live dashboards, tenant management, billing automation, and scalable API services for IoT ecosystems.',
+        clientName: 'HydroMonitor',
+        industry: 'IoT / Backend Infrastructure',
+        technologies: ['Node.js', 'Express.js', 'MongoDB', 'MQTT', 'WebSockets', 'Docker'],
+        thumbnail: 'https://placehold.co/800x600/0E7490/FFFFFF?text=HydroMonitor+V2',
         gallery: [],
-        liveUrl: 'https://example.com',
+        liveUrl: 'https://hydromonitor-v2-backend.vercel.app/',
         featured: true,
-        completionYear: '2023',
-        servicesProvided: ['Mobile Development', 'Backend Development', 'UI/UX Design'],
+        completionYear: '2025',
+        servicesProvided: ['Backend Development', 'IoT Engineering', 'API Design'],
+        colorTheme: '#0e7490',
+        status: 'published',
+        seoTitle: 'HydroMonitorV2 Backend | IoT Backend Infrastructure | Soyiri Labs',
+        seoDescription: 'HydroMonitorV2 Backend is a robust Node.js backend for smart water monitoring, handling real-time sensor data, MQTT ingestion, WebSocket dashboards, and IoT billing automation.',
+      },
+      {
+        title: 'BackendSP',
+        slug: 'backend-sp',
+        description:
+          'A high-performance backend platform built with Node.js and TypeScript, featuring modular service architecture, real-time data processing, secure authentication, and scalable RESTful APIs for modern web applications and third-party integrations.',
+        clientName: 'BackendSP',
+        industry: 'Backend / API Development',
+        technologies: ['Node.js', 'Express.js', 'TypeScript', 'PostgreSQL', 'Redis', 'Docker'],
+        thumbnail: 'https://placehold.co/800x600/7C3AED/FFFFFF?text=BackendSP',
+        gallery: [],
+        liveUrl: 'https://express-js-on-vercel-liart-chi.vercel.app/',
+        featured: true,
+        completionYear: '2025',
+        servicesProvided: ['Backend Development', 'API Design', 'DevOps'],
         colorTheme: '#7c3aed',
         status: 'published',
+        seoTitle: 'BackendSP | High-Performance Backend Platform | Soyiri Labs',
+        seoDescription: 'BackendSP is a high-performance Node.js and TypeScript backend platform with modular architecture, real-time processing, secure APIs, and scalable service design.',
       },
     ];
 
-    await Project.insertMany(projects);
-    console.log(`${projects.length} projects seeded`);
+    for (const project of projects) {
+      await Project.findOneAndUpdate(
+        { slug: project.slug },
+        { $set: project },
+        { upsert: true, new: true },
+      );
+      console.log(`Project seeded: ${project.title}`);
+    }
   }
 
   // Services
