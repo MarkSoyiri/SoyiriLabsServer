@@ -171,6 +171,30 @@ const seedData = async (): Promise<void> => {
         seoTitle: 'BackendSP | High-Performance Backend Platform | Soyiri Labs',
         seoDescription: 'BackendSP is a high-performance Node.js and TypeScript backend platform with modular architecture, real-time processing, secure APIs, and scalable service design.',
       },
+      {
+        title: 'BetGuard',
+        slug: 'betguard',
+        description:
+          'A responsible betting companion web app that helps users track spending, set budgets, log bets, and build healthier betting habits. Features spending analytics, smart budget alerts, an AI coach, savings goals, risk assessments, an education center, and a supportive community.',
+        clientName: 'BetGuard',
+        industry: 'Fintech / Responsible Gaming',
+        technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Recharts', 'Framer Motion', 'Vite'],
+        thumbnail: 'https://res.cloudinary.com/cubiglnr/image/upload/v1785496964/soyirilabs/projects/u3oziavwqloxbejqnubm.png',
+        gallery: [
+          'https://res.cloudinary.com/cubiglnr/image/upload/v1785496964/soyirilabs/projects/gallery/uiw6lmmsefqtgilpsgoy.png',
+          'https://res.cloudinary.com/cubiglnr/image/upload/v1785496962/soyirilabs/projects/gallery/wgu510ko4zjrq6e3026v.png',
+          'https://res.cloudinary.com/cubiglnr/image/upload/v1785496964/soyirilabs/projects/gallery/co0tme9dj3nxjfl45gxl.png',
+        ],
+        liveUrl: 'https://bet-guard-web-app-soyiri-labs-9yruqr0c5-mark-soyiris-projects.vercel.app/',
+        githubUrl: 'https://github.com/MarkSoyiri/BetGuard-webApp-SoyiriLabs',
+        featured: true,
+        completionYear: '2026',
+        servicesProvided: ['Web Development', 'Web Application', 'UI/UX Design'],
+        colorTheme: '#1e3a8a',
+        status: 'published',
+        seoTitle: 'BetGuard | Responsible Betting Companion App | Soyiri Labs',
+        seoDescription: 'BetGuard is a responsible betting companion app with spending analytics, smart budget alerts, an AI coach, savings goals, and an education center to build healthier betting habits.',
+      },
     ];
 
     for (const project of projects) {
